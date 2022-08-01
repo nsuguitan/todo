@@ -33,4 +33,9 @@ class ToDoController(val todoRepository: TodoRepository) {
 
         return todoRepository.save(updatedTodo)
     }
+
+    @DeleteMapping("/{todoId}")
+    fun deleteTodo(@PathVariable("todoId") todoId: Long){
+        todoRepository.deleteById(todoId)
+    }
 }
