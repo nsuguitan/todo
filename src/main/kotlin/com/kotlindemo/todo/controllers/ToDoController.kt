@@ -2,10 +2,10 @@ package com.kotlindemo.todo.controllers
 
 import com.kotlindemo.todo.entities.Todo
 import com.kotlindemo.todo.entities.TodoRepository
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.web.bind.annotation.*
-import java.util.Optional
+import org.springframework.data.domain.Sort
+import java.util.*
 
 
 @RestController
@@ -14,7 +14,7 @@ class ToDoController(val todoRepository: TodoRepository) {
 
     @CrossOrigin
     @GetMapping
-    fun getTodos() = todoRepository.findAll()
+    fun getTodos() = todoRepository.findAll(Sort.by("id").descending())
 
     @CrossOrigin
     @GetMapping("/{todoId}")
